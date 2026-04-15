@@ -1,0 +1,1499 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShoeStyle - Premium Footwear Collection</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #e85d04;
+            --secondary-color: #1a1a2e;
+            --accent-color: #ff9500;
+            --light-bg: #fff8f0;
+            --text-dark: #1a1a2e;
+            --text-muted: #6c757d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #ffffff;
+            color: var(--text-dark);
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background-color: var(--secondary-color);
+            padding: 8px 0;
+            font-size: 13px;
+        }
+
+        .top-bar a {
+            color: #ffffff;
+            text-decoration: none;
+            margin-right: 20px;
+            transition: color 0.3s;
+        }
+
+        .top-bar a:hover {
+            color: var(--accent-color);
+        }
+
+        .top-bar .social-icons a {
+            margin-left: 12px;
+            margin-right: 0;
+        }
+
+        .delivery-text {
+            color: var(--accent-color);
+            font-weight: 500;
+        }
+
+        /* Header */
+        .main-header {
+            background-color: #ffffff;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .logo i {
+            margin-right: 8px;
+        }
+
+        .search-box {
+            position: relative;
+            max-width: 500px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 12px 50px 12px 20px;
+            border: 2px solid #eee;
+            border-radius: 30px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .search-box button {
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: var(--primary-color);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .search-box button:hover {
+            background-color: var(--accent-color);
+        }
+
+        .header-actions a {
+            color: var(--text-dark);
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .header-actions a:hover {
+            color: var(--primary-color);
+        }
+
+        .header-actions i {
+            margin-right: 5px;
+        }
+
+        .cart-badge {
+            background-color: var(--primary-color);
+            color: white;
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 10px;
+            margin-left: 3px;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+            padding: 60px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            top: -100px;
+            right: -100px;
+        }
+
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .hero-content p {
+            color: rgba(255,255,255,0.9);
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .hero-btn {
+            background-color: white;
+            color: var(--primary-color);
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+
+        .hero-btn:hover {
+            background-color: var(--secondary-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.3));
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Section Titles */
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: var(--text-muted);
+            font-size: 16px;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+
+        /* Category Section */
+        .category-section {
+            padding: 60px 0;
+            background-color: var(--light-bg);
+        }
+
+        .category-item {
+            text-align: center;
+            padding: 20px;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .category-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .category-icon {
+            width: 100px;
+            height: 100px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border: 3px solid transparent;
+            transition: border-color 0.3s;
+        }
+
+        .category-item:hover .category-icon {
+            border-color: var(--primary-color);
+        }
+
+        .category-icon i {
+            font-size: 40px;
+            color: var(--primary-color);
+        }
+
+        .category-item h6 {
+            font-weight: 600;
+            color: var(--text-dark);
+            font-size: 14px;
+        }
+
+        /* Products Section */
+        .products-section {
+            padding: 80px 0;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            margin-bottom: 30px;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .product-image {
+            position: relative;
+            background-color: #f8f9fa;
+            padding: 30px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            max-width: 100%;
+            height: 180px;
+            object-fit: contain;
+            transition: transform 0.5s;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.1) rotate(-5deg);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .product-badge.new {
+            background-color: #28a745;
+        }
+
+        .wishlist-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 35px;
+            height: 35px;
+            background-color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+
+        .wishlist-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-info h5 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+        }
+
+        .product-rating {
+            color: #ffc107;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+
+        .product-rating span {
+            color: var(--text-muted);
+            margin-left: 5px;
+        }
+
+        .product-price {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .current-price {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .old-price {
+            font-size: 14px;
+            color: var(--text-muted);
+            text-decoration: line-through;
+        }
+
+        .add-cart-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+            border: none;
+            border-radius: 25px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .add-cart-btn:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
+        }
+
+        /* Sale Banner */
+        .sale-banner {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+            padding: 40px;
+            border-radius: 20px;
+            margin: 40px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sale-banner::before {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            bottom: -50px;
+            left: -50px;
+        }
+
+        .sale-banner h3 {
+            color: white;
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            margin-bottom: 5px;
+        }
+
+        .sale-banner p {
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 0;
+        }
+
+        .sale-badge {
+            background-color: white;
+            color: var(--primary-color);
+            padding: 15px 30px;
+            border-radius: 15px;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        /* Reviews Section */
+        .reviews-section {
+            padding: 80px 0;
+            background-color: var(--light-bg);
+        }
+
+        .review-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .review-card img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border: 3px solid var(--primary-color);
+        }
+
+        .review-card h5 {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .review-card .location {
+            color: var(--text-muted);
+            font-size: 13px;
+            margin-bottom: 15px;
+        }
+
+        .review-card .stars {
+            color: #ffc107;
+            margin-bottom: 15px;
+        }
+
+        .review-card p {
+            color: var(--text-muted);
+            font-style: italic;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        /* Newsletter */
+        .newsletter-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--secondary-color) 0%, #16213e 100%);
+        }
+
+        .newsletter-section h3 {
+            color: white;
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .newsletter-section p {
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 30px;
+        }
+
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 30px 0 0 30px;
+            font-size: 14px;
+        }
+
+        .newsletter-form input:focus {
+            outline: none;
+        }
+
+        .newsletter-form button {
+            padding: 15px 35px;
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+            border: none;
+            border-radius: 0 30px 30px 0;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        .newsletter-form button:hover {
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--secondary-color);
+            padding: 60px 0 30px;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .footer-logo i {
+            color: var(--primary-color);
+            margin-right: 8px;
+        }
+
+        .footer p {
+            color: rgba(255,255,255,0.7);
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .footer h5 {
+            color: white;
+            font-weight: 600;
+            margin-bottom: 25px;
+            font-size: 18px;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-links i {
+            margin-right: 10px;
+            color: var(--primary-color);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 40px;
+            padding-top: 25px;
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            margin: 0;
+            font-size: 13px;
+        }
+
+        .payment-methods img {
+            height: 30px;
+            margin: 0 5px;
+        }
+
+        /* View More Button */
+        .view-more-btn {
+            display: inline-block;
+            padding: 12px 40px;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .view-more-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 32px;
+            }
+
+            .hero-content {
+                text-align: center;
+                margin-bottom: 40px;
+            }
+
+            .section-title h2 {
+                font-size: 28px;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter-form input {
+                border-radius: 30px;
+                margin-bottom: 15px;
+            }
+
+            .newsletter-form button {
+                border-radius: 30px;
+            }
+        }
+    </style>
+<script>window.__V0_SANDBOX_ID__="sb-2891trrk2yvg"</script><script async src="/v0-runtime-dist.js"></script></head>
+<body>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <a href="#">HOME</a>
+                    <a href="#">SHOP</a>
+                    <a href="#">ABOUT US</a>
+                    <a href="#">CONTACT US</a>
+                </div>
+                <div class="col-md-6 text-end">
+                    <span class="delivery-text"><i class="fas fa-truck me-2"></i>Free Shipping on Orders Over $99</span>
+                    <span class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-3">
+                    <a href="#" class="logo"><i class="fas fa-shoe-prints"></i>ShoeStyle</a>
+                </div>
+                <div class="col-md-5">
+                    <div class="search-box">
+                        <input type="text" placeholder="Search for shoes, brands, styles...">
+                        <button><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+                <div class="col-md-4 text-end header-actions">
+                    <a href="#"><i class="fas fa-heart"></i> Wishlist</a>
+                    <a href="#"><i class="fas fa-shopping-bag"></i> Cart <span class="cart-badge">3</span></a>
+                    <a href="#"><i class="fas fa-user"></i> Login</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 hero-content">
+                    <h1>Step Into Style & Comfort</h1>
+                    <p>Discover our latest collection of premium footwear. From casual sneakers to elegant heels, find your perfect pair today.</p>
+                    <a href="#" class="hero-btn"><i class="fas fa-shopping-bag me-2"></i>Shop Now</a>
+                </div>
+                <div class="col-md-6 hero-image text-center">
+                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&h=400&fit=crop" alt="Featured Shoe">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Category Section -->
+    <section class="category-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Categories</h2>
+                <p>Find the perfect shoes for every occasion</p>
+            </div>
+            <div class="row">
+                <div class="col-6 col-md-3 col-lg">
+                    <div class="category-item">
+                        <div class="category-icon">
+                            <i class="fas fa-running"></i>
+                        </div>
+                        <h6>Running</h6>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3 col-lg">
+                    <div class="category-item">
+                        <div class="category-icon">
+                            <i class="fas fa-basketball-ball"></i>
+                        </div>
+                        <h6>Sports</h6>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3 col-lg">
+                    <div class="category-item">
+                        <div class="category-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <h6>Formal</h6>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3 col-lg">
+                    <div class="category-item">
+                        <div class="category-icon">
+                            <i class="fas fa-umbrella-beach"></i>
+                        </div>
+                        <h6>Casual</h6>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3 col-lg">
+                    <div class="category-item">
+                        <div class="category-icon">
+                            <i class="fas fa-mountain"></i>
+                        </div>
+                        <h6>Hiking</h6>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3 col-lg">
+                    <div class="category-item">
+                        <div class="category-icon">
+                            <i class="fas fa-female"></i>
+                        </div>
+                        <h6>Heels</h6>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3 col-lg">
+                    <div class="category-item">
+                        <div class="category-icon">
+                            <i class="fas fa-child"></i>
+                        </div>
+                        <h6>Kids</h6>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3 col-lg">
+                    <div class="category-item">
+                        <div class="category-icon">
+                            <i class="fas fa-snowflake"></i>
+                        </div>
+                        <h6>Boots</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="products-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Featured Products</h2>
+                <p>Handpicked selection of our best sellers</p>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-lg-3">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <span class="product-badge">HOT</span>
+                            <button class="wishlist-btn"><i class="far fa-heart"></i></button>
+                            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=300&h=200&fit=crop" alt="Nike Air Max">
+                        </div>
+                        <div class="product-info">
+                            <h5>Nike Air Max 270</h5>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>(124)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="current-price">$129.99</span>
+                                <span class="old-price">$179.99</span>
+                            </div>
+                            <button class="add-cart-btn"><i class="fas fa-shopping-cart me-2"></i>Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <span class="product-badge new">NEW</span>
+                            <button class="wishlist-btn"><i class="far fa-heart"></i></button>
+                            <img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=300&h=200&fit=crop" alt="Adidas Ultra Boost">
+                        </div>
+                        <div class="product-info">
+                            <h5>Adidas Ultra Boost</h5>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>(89)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="current-price">$149.99</span>
+                                <span class="old-price">$199.99</span>
+                            </div>
+                            <button class="add-cart-btn"><i class="fas fa-shopping-cart me-2"></i>Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <button class="wishlist-btn"><i class="far fa-heart"></i></button>
+                            <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=300&h=200&fit=crop" alt="Puma RS-X">
+                        </div>
+                        <div class="product-info">
+                            <h5>Puma RS-X Reinvention</h5>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span>(56)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="current-price">$89.99</span>
+                                <span class="old-price">$119.99</span>
+                            </div>
+                            <button class="add-cart-btn"><i class="fas fa-shopping-cart me-2"></i>Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <span class="product-badge">-30%</span>
+                            <button class="wishlist-btn"><i class="far fa-heart"></i></button>
+                            <img src="https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?w=300&h=200&fit=crop" alt="New Balance">
+                        </div>
+                        <div class="product-info">
+                            <h5>New Balance 574</h5>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>(78)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="current-price">$79.99</span>
+                                <span class="old-price">$109.99</span>
+                            </div>
+                            <button class="add-cart-btn"><i class="fas fa-shopping-cart me-2"></i>Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sale Banner -->
+    <section class="container">
+        <div class="sale-banner">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <h3>Weekend Flash Sale</h3>
+                    <p>Get amazing discounts on all premium footwear. Limited time offer!</p>
+                </div>
+                <div class="col-md-4 text-md-end">
+                    <span class="sale-badge">25% OFF</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Products -->
+    <section class="products-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Popular Products</h2>
+                <p>Trending styles loved by customers</p>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-lg-3">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <button class="wishlist-btn"><i class="far fa-heart"></i></button>
+                            <img src="https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=300&h=200&fit=crop" alt="Converse">
+                        </div>
+                        <div class="product-info">
+                            <h5>Converse All Star High</h5>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>(201)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="current-price">$65.00</span>
+                                <span class="old-price">$85.00</span>
+                            </div>
+                            <button class="add-cart-btn"><i class="fas fa-shopping-cart me-2"></i>Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <span class="product-badge">HOT</span>
+                            <button class="wishlist-btn"><i class="far fa-heart"></i></button>
+                            <img src="https://images.unsplash.com/photo-1587563871167-1ee9c731aefb?w=300&h=200&fit=crop" alt="Jordan">
+                        </div>
+                        <div class="product-info">
+                            <h5>Air Jordan 1 Retro</h5>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>(156)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="current-price">$189.99</span>
+                                <span class="old-price">$229.99</span>
+                            </div>
+                            <button class="add-cart-btn"><i class="fas fa-shopping-cart me-2"></i>Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <span class="product-badge new">NEW</span>
+                            <button class="wishlist-btn"><i class="far fa-heart"></i></button>
+                            <img src="https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?w=300&h=200&fit=crop" alt="Vans">
+                        </div>
+                        <div class="product-info">
+                            <h5>Vans Old Skool</h5>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span>(98)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="current-price">$59.99</span>
+                                <span class="old-price">$75.00</span>
+                            </div>
+                            <button class="add-cart-btn"><i class="fas fa-shopping-cart me-2"></i>Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <button class="wishlist-btn"><i class="far fa-heart"></i></button>
+                            <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?w=300&h=200&fit=crop" alt="Reebok">
+                        </div>
+                        <div class="product-info">
+                            <h5>Reebok Classic Leather</h5>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>(134)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="current-price">$74.99</span>
+                                <span class="old-price">$99.99</span>
+                            </div>
+                            <button class="add-cart-btn"><i class="fas fa-shopping-cart me-2"></i>Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <span class="product-badge">-20%</span>
+                            <button class="wishlist-btn"><i class="far fa-heart"></i></button>
+                            <img src="https://images.unsplash.com/photo-1539185441755-769473a23570?w=300&h=200&fit=crop" alt="Nike Dunk">
+                        </div>
+                        <div class="product-info">
+                            <h5>Nike Dunk Low</h5>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>(87)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="current-price">$99.99</span>
+                                <span class="old-price">$125.00</span>
+                            </div>
+                            <button class="add-cart-btn"><i class="fas fa-shopping-cart me-2"></i>Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <button class="wishlist-btn"><i class="far fa-heart"></i></button>
+                            <img src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=300&h=200&fit=crop" alt="Asics">
+                        </div>
+                        <div class="product-info">
+                            <h5>Asics Gel-Kayano</h5>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>(112)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="current-price">$139.99</span>
+                                <span class="old-price">$169.99</span>
+                            </div>
+                            <button class="add-cart-btn"><i class="fas fa-shopping-cart me-2"></i>Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <span class="product-badge new">NEW</span>
+                            <button class="wishlist-btn"><i class="far fa-heart"></i></button>
+                            <img src="https://images.unsplash.com/photo-1543508282-6319a3e2621f?w=300&h=200&fit=crop" alt="Skechers">
+                        </div>
+                        <div class="product-info">
+                            <h5>Skechers D&apos;Lites</h5>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span>(65)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="current-price">$69.99</span>
+                                <span class="old-price">$89.99</span>
+                            </div>
+                            <button class="add-cart-btn"><i class="fas fa-shopping-cart me-2"></i>Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <span class="product-badge">HOT</span>
+                            <button class="wishlist-btn"><i class="far fa-heart"></i></button>
+                            <img src="https://images.unsplash.com/photo-1579338559194-a162d19bf842?w=300&h=200&fit=crop" alt="Under Armour">
+                        </div>
+                        <div class="product-info">
+                            <h5>Under Armour HOVR</h5>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>(93)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="current-price">$119.99</span>
+                                <span class="old-price">$149.99</span>
+                            </div>
+                            <button class="add-cart-btn"><i class="fas fa-shopping-cart me-2"></i>Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <a href="#" class="view-more-btn">View More Products</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Just For You Section -->
+    <section class="products-section" style="background-color: #f8f9fa;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Just For You</h2>
+                <p>Personalized recommendations based on your style</p>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-lg-3">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <span class="product-badge">-20%</span>
+                            <button class="wishlist-btn"><i class="far fa-heart"></i></button>
+                            <img src="https://images.unsplash.com/photo-1539185441755-769473a23570?w=300&h=200&fit=crop" alt="Nike Dunk">
+                        </div>
+                        <div class="product-info">
+                            <h5>Nike Dunk Low</h5>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>(87)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="current-price">$99.99</span>
+                                <span class="old-price">$125.00</span>
+                            </div>
+                            <button class="add-cart-btn"><i class="fas fa-shopping-cart me-2"></i>Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <button class="wishlist-btn"><i class="far fa-heart"></i></button>
+                            <img src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=300&h=200&fit=crop" alt="Asics">
+                        </div>
+                        <div class="product-info">
+                            <h5>Asics Gel-Kayano</h5>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>(112)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="current-price">$139.99</span>
+                                <span class="old-price">$169.99</span>
+                            </div>
+                            <button class="add-cart-btn"><i class="fas fa-shopping-cart me-2"></i>Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <span class="product-badge new">NEW</span>
+                            <button class="wishlist-btn"><i class="far fa-heart"></i></button>
+                            <img src="https://images.unsplash.com/photo-1543508282-6319a3e2621f?w=300&h=200&fit=crop" alt="Skechers">
+                        </div>
+                        <div class="product-info">
+                            <h5>Skechers D&apos;Lites</h5>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span>(65)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="current-price">$69.99</span>
+                                <span class="old-price">$89.99</span>
+                            </div>
+                            <button class="add-cart-btn"><i class="fas fa-shopping-cart me-2"></i>Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <span class="product-badge">HOT</span>
+                            <button class="wishlist-btn"><i class="far fa-heart"></i></button>
+                            <img src="https://images.unsplash.com/photo-1579338559194-a162d19bf842?w=300&h=200&fit=crop" alt="Under Armour">
+                        </div>
+                        <div class="product-info">
+                            <h5>Under Armour HOVR</h5>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>(93)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="current-price">$119.99</span>
+                                <span class="old-price">$149.99</span>
+                            </div>
+                            <button class="add-cart-btn"><i class="fas fa-shopping-cart me-2"></i>Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <button class="wishlist-btn"><i class="far fa-heart"></i></button>
+                            <img src="https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=300&h=200&fit=crop" alt="Converse">
+                        </div>
+                        <div class="product-info">
+                            <h5>Converse All Star High</h5>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>(201)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="current-price">$65.00</span>
+                                <span class="old-price">$85.00</span>
+                            </div>
+                            <button class="add-cart-btn"><i class="fas fa-shopping-cart me-2"></i>Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <span class="product-badge">HOT</span>
+                            <button class="wishlist-btn"><i class="far fa-heart"></i></button>
+                            <img src="https://images.unsplash.com/photo-1587563871167-1ee9c731aefb?w=300&h=200&fit=crop" alt="Jordan">
+                        </div>
+                        <div class="product-info">
+                            <h5>Air Jordan 1 Retro</h5>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>(156)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="current-price">$189.99</span>
+                                <span class="old-price">$229.99</span>
+                            </div>
+                            <button class="add-cart-btn"><i class="fas fa-shopping-cart me-2"></i>Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <span class="product-badge new">NEW</span>
+                            <button class="wishlist-btn"><i class="far fa-heart"></i></button>
+                            <img src="https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?w=300&h=200&fit=crop" alt="Vans">
+                        </div>
+                        <div class="product-info">
+                            <h5>Vans Old Skool</h5>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span>(98)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="current-price">$59.99</span>
+                                <span class="old-price">$75.00</span>
+                            </div>
+                            <button class="add-cart-btn"><i class="fas fa-shopping-cart me-2"></i>Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Customer Reviews</h2>
+                <p>What our customers say about us</p>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="review-card">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop" alt="Customer">
+                        <h5>Sarah Johnson</h5>
+                        <p class="location"><i class="fas fa-map-marker-alt me-1"></i>New York, USA</p>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"Amazing quality shoes! The Nike Air Max I ordered exceeded my expectations. Fast delivery and excellent customer service."</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="review-card">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop" alt="Customer">
+                        <h5>Michael Chen</h5>
+                        <p class="location"><i class="fas fa-map-marker-alt me-1"></i>Los Angeles, USA</p>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <p>"Great selection of sneakers at competitive prices. I&apos;ve been a loyal customer for 2 years now. Highly recommended!"</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="review-card">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop" alt="Customer">
+                        <h5>Emily Davis</h5>
+                        <p class="location"><i class="fas fa-map-marker-alt me-1"></i>Chicago, USA</p>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"Love this store! The return policy is hassle-free and the shoes are always authentic. My go-to for all footwear needs."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section text-center">
+        <div class="container">
+            <h3>Subscribe to Our Newsletter</h3>
+            <p>Get the latest updates on new arrivals and exclusive offers</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Enter your email address">
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <span class="footer-logo"><i class="fas fa-shoe-prints"></i>ShoeStyle</span>
+                    <p>We offer fast delivery, secure payment, easy returns, and the best quality products at affordable prices. Your satisfaction is our priority.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <h5>Support</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Return Policy</a></li>
+                        <li><a href="#">FAQs</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <h5>Useful Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Shop</a></li>
+                        <li><a href="#">Categories</a></li>
+                        <li><a href="#">My Account</a></li>
+                        <li><a href="#">Track Order</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-4 mb-4">
+                    <h5>Contact Info</h5>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i>123 Fashion Street, New York, NY 10001</li>
+                        <li><i class="fas fa-phone"></i>+1 (555) 123-4567</li>
+                        <li><i class="fas fa-envelope"></i>support@shoestyle.com</li>
+                        <li><i class="fas fa-clock"></i>Mon - Fri: 9:00 AM - 6:00 PM</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <p>&copy; 2026 ShoeStyle. All Rights Reserved.</p>
+                    </div>
+                    <div class="col-md-6 text-md-end payment-methods">
+                        <i class="fab fa-cc-visa fa-2x me-2" style="color: #1a1f71;"></i>
+                        <i class="fab fa-cc-mastercard fa-2x me-2" style="color: #eb001b;"></i>
+                        <i class="fab fa-cc-paypal fa-2x me-2" style="color: #003087;"></i>
+                        <i class="fab fa-cc-amex fa-2x" style="color: #006fcf;"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

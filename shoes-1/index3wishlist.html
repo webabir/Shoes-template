@@ -1,0 +1,748 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wishlist - SoleMate</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #FF4D00;
+            --primary-dark: #E64500;
+            --secondary: #0A0A0A;
+            --accent: #FFB800;
+            --light: #FAFAFA;
+            --gray-100: #F5F5F5;
+            --gray-200: #EEEEEE;
+            --gray-300: #E0E0E0;
+            --gray-500: #9E9E9E;
+            --gray-700: #616161;
+            --gray-900: #212121;
+            --white: #FFFFFF;
+            --success: #22C55E;
+            --danger: #EF4444;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 20px rgba(0,0,0,0.08);
+            --shadow-lg: 0 10px 40px rgba(0,0,0,0.12);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --radius-xl: 30px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--gray-100);
+            color: var(--gray-900);
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        .main-header {
+            background: var(--white);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-sm);
+        }
+        .header-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+        }
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--secondary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo i {
+            color: var(--primary);
+            font-size: 24px;
+        }
+        .logo span {
+            color: var(--primary);
+        }
+        .search-container {
+            flex: 1;
+            max-width: 550px;
+        }
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: var(--gray-100);
+            border-radius: var(--radius-xl);
+            padding: 5px 5px 5px 25px;
+            border: 2px solid transparent;
+            transition: var(--transition);
+        }
+        .search-box:focus-within {
+            border-color: var(--primary);
+            background: var(--white);
+        }
+        .search-box input {
+            flex: 1;
+            border: none;
+            background: transparent;
+            padding: 10px 15px 10px 0;
+            font-size: 14px;
+            outline: none;
+        }
+        .search-box button {
+            background: var(--primary);
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            color: white;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .header-action-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            border-radius: var(--radius-xl);
+            color: var(--gray-700);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+        .header-action-btn:hover {
+            background: var(--gray-100);
+            color: var(--primary);
+        }
+        .header-action-btn .badge {
+            position: absolute;
+            top: 2px;
+            right: 8px;
+            background: var(--primary);
+            color: white;
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 10px;
+            font-weight: 600;
+        }
+        .btn-login {
+            background: var(--secondary);
+            color: white !important;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb-section {
+            background: var(--white);
+            padding: 20px 0;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        .breadcrumb {
+            margin: 0;
+        }
+        .breadcrumb-item a {
+            color: var(--gray-700);
+            text-decoration: none;
+        }
+        .breadcrumb-item.active {
+            color: var(--primary);
+        }
+
+        /* Page Header */
+        .page-header {
+            padding: 40px 0;
+            text-align: center;
+        }
+        .page-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .page-header p {
+            color: var(--gray-500);
+        }
+
+        /* Wishlist Section */
+        .wishlist-section {
+            padding: 0 0 80px;
+        }
+
+        /* Wishlist Grid */
+        .wishlist-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        /* Wishlist Card */
+        .wishlist-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+            position: relative;
+        }
+        .wishlist-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+        .remove-wishlist {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 36px;
+            height: 36px;
+            background: var(--white);
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            z-index: 10;
+        }
+        .remove-wishlist:hover {
+            background: var(--danger);
+            color: white;
+        }
+        .wishlist-card-image {
+            position: relative;
+            background: var(--gray-100);
+            padding: 30px;
+        }
+        .wishlist-card-image img {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+            transition: transform 0.5s ease;
+        }
+        .wishlist-card:hover .wishlist-card-image img {
+            transform: scale(1.1);
+        }
+        .stock-status {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            padding: 6px 12px;
+            border-radius: var(--radius-xl);
+            font-size: 11px;
+            font-weight: 600;
+        }
+        .stock-status.in-stock {
+            background: #DCFCE7;
+            color: #166534;
+        }
+        .stock-status.out-of-stock {
+            background: #FEE2E2;
+            color: #991B1B;
+        }
+        .wishlist-card-body {
+            padding: 20px;
+        }
+        .wishlist-card-brand {
+            font-size: 12px;
+            color: var(--gray-500);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 5px;
+        }
+        .wishlist-card-title {
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 10px;
+            color: var(--gray-900);
+        }
+        .wishlist-card-title a {
+            color: inherit;
+            text-decoration: none;
+        }
+        .wishlist-card-title a:hover {
+            color: var(--primary);
+        }
+        .wishlist-card-price {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        .current-price {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        .original-price {
+            font-size: 14px;
+            color: var(--gray-500);
+            text-decoration: line-through;
+        }
+        .btn-add-cart {
+            width: 100%;
+            padding: 12px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .btn-add-cart:hover {
+            background: var(--primary-dark);
+        }
+        .btn-add-cart.disabled {
+            background: var(--gray-300);
+            cursor: not-allowed;
+        }
+
+        /* Empty Wishlist */
+        .empty-wishlist {
+            text-align: center;
+            padding: 80px 40px;
+            background: var(--white);
+            border-radius: var(--radius-lg);
+        }
+        .empty-wishlist-icon {
+            width: 120px;
+            height: 120px;
+            background: var(--gray-100);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+        }
+        .empty-wishlist-icon i {
+            font-size: 50px;
+            color: var(--gray-500);
+        }
+        .empty-wishlist h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+        .empty-wishlist p {
+            color: var(--gray-500);
+            margin-bottom: 30px;
+        }
+        .btn-shop-now {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 40px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--radius-xl);
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        .btn-shop-now:hover {
+            background: var(--primary-dark);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--secondary);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        .footer-brand .logo {
+            color: white;
+            margin-bottom: 15px;
+        }
+        .footer-brand p {
+            color: rgba(255,255,255,0.7);
+            font-size: 14px;
+        }
+        .footer h5 {
+            font-weight: 700;
+            margin-bottom: 25px;
+            font-size: 16px;
+        }
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 14px;
+        }
+        .footer-links a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+        .footer-bottom {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .footer-bottom p {
+            margin: 0;
+            font-size: 14px;
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* Toast */
+        .toast-container {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 9999;
+        }
+        .custom-toast {
+            background: var(--secondary);
+            color: white;
+            padding: 20px 30px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: var(--shadow-lg);
+            transform: translateX(150%);
+            transition: transform 0.4s ease;
+        }
+        .custom-toast.show {
+            transform: translateX(0);
+        }
+        .custom-toast i {
+            color: var(--success);
+            font-size: 24px;
+        }
+        .toast-content h6 {
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+        .toast-content p {
+            font-size: 13px;
+            color: rgba(255,255,255,0.7);
+            margin: 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 1199px) {
+            .wishlist-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        @media (max-width: 991px) {
+            .wishlist-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 767px) {
+            .search-container {
+                display: none;
+            }
+            .header-action-btn span {
+                display: none;
+            }
+            .page-header h1 {
+                font-size: 32px;
+            }
+            .wishlist-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+<script>window.__V0_SANDBOX_ID__="sb-2891trrk2yvg"</script><script async src="/v0-runtime-dist.js"></script></head>
+<body>
+
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-wrapper">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-shoe-prints"></i>
+                    Sole<span>Mate</span>
+                </a>
+                <div class="search-container">
+                    <div class="search-box">
+                        <input type="text" placeholder="Search for shoes, brands, styles...">
+                        <button><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <a href="wishlist.html" class="header-action-btn">
+                        <i class="fas fa-heart"></i>
+                        <span>Wishlist</span>
+                        <span class="badge">3</span>
+                    </a>
+                    <a href="cart.html" class="header-action-btn">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span>Cart</span>
+                        <span class="badge">2</span>
+                    </a>
+                    <a href="#" class="header-action-btn btn-login">
+                        <i class="far fa-user"></i>
+                        <span>Login</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <section class="breadcrumb-section">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Wishlist</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>My Wishlist</h1>
+            <p>You have 3 items in your wishlist</p>
+        </div>
+    </section>
+
+    <!-- Wishlist Section -->
+    <section class="wishlist-section">
+        <div class="container">
+            <div class="wishlist-grid" id="wishlistGrid">
+                <!-- Wishlist Item 1 -->
+                <div class="wishlist-card">
+                    <button class="remove-wishlist" onclick="removeFromWishlist(this)" title="Remove from Wishlist">
+                        <i class="fas fa-times"></i>
+                    </button>
+                    <div class="wishlist-card-image">
+                        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400" alt="Product">
+                        <span class="stock-status in-stock">In Stock</span>
+                    </div>
+                    <div class="wishlist-card-body">
+                        <div class="wishlist-card-brand">Nike</div>
+                        <h5 class="wishlist-card-title"><a href="product.html">Air Max 270 React</a></h5>
+                        <div class="wishlist-card-price">
+                            <span class="current-price">$159.99</span>
+                            <span class="original-price">$199.99</span>
+                        </div>
+                        <button class="btn-add-cart" onclick="addToCart(this)">
+                            <i class="fas fa-shopping-bag"></i>
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Wishlist Item 2 -->
+                <div class="wishlist-card">
+                    <button class="remove-wishlist" onclick="removeFromWishlist(this)" title="Remove from Wishlist">
+                        <i class="fas fa-times"></i>
+                    </button>
+                    <div class="wishlist-card-image">
+                        <img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=400" alt="Product">
+                        <span class="stock-status in-stock">In Stock</span>
+                    </div>
+                    <div class="wishlist-card-body">
+                        <div class="wishlist-card-brand">Nike</div>
+                        <h5 class="wishlist-card-title"><a href="product.html">Air Force 1 &apos;07</a></h5>
+                        <div class="wishlist-card-price">
+                            <span class="current-price">$120.00</span>
+                        </div>
+                        <button class="btn-add-cart" onclick="addToCart(this)">
+                            <i class="fas fa-shopping-bag"></i>
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Wishlist Item 3 -->
+                <div class="wishlist-card">
+                    <button class="remove-wishlist" onclick="removeFromWishlist(this)" title="Remove from Wishlist">
+                        <i class="fas fa-times"></i>
+                    </button>
+                    <div class="wishlist-card-image">
+                        <img src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=400" alt="Product">
+                        <span class="stock-status out-of-stock">Out of Stock</span>
+                    </div>
+                    <div class="wishlist-card-body">
+                        <div class="wishlist-card-brand">Adidas</div>
+                        <h5 class="wishlist-card-title"><a href="product.html">Ultraboost 22</a></h5>
+                        <div class="wishlist-card-price">
+                            <span class="current-price">$180.00</span>
+                        </div>
+                        <button class="btn-add-cart disabled" disabled>
+                            <i class="fas fa-shopping-bag"></i>
+                            Out of Stock
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Empty Wishlist (hidden by default) -->
+            <div class="empty-wishlist" id="emptyWishlist" style="display: none;">
+                <div class="empty-wishlist-icon">
+                    <i class="far fa-heart"></i>
+                </div>
+                <h3>Your Wishlist is Empty</h3>
+                <p>Looks like you have not added any items to your wishlist yet. Start shopping and save your favorite items here!</p>
+                <a href="shop.html" class="btn-shop-now">
+                    <i class="fas fa-shopping-bag"></i>
+                    Start Shopping
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="footer-brand">
+                        <a href="index.html" class="logo">
+                            <i class="fas fa-shoe-prints"></i>
+                            Sole<span>Mate</span>
+                        </a>
+                        <p>Your destination for premium footwear. We offer the latest styles and brands at competitive prices.</p>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 col-6 mb-4">
+                    <h5>Shop</h5>
+                    <ul class="footer-links">
+                        <li><a href="shop.html">All Products</a></li>
+                        <li><a href="#">New Arrivals</a></li>
+                        <li><a href="#">Best Sellers</a></li>
+                        <li><a href="#">Sale</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 col-6 mb-4">
+                    <h5>Support</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Returns</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 col-6 mb-4">
+                    <h5>Company</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Press</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 col-6 mb-4">
+                    <h5>Legal</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>2026 SoleMate. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div class="toast-container">
+        <div class="custom-toast" id="cartToast">
+            <i class="fas fa-check-circle"></i>
+            <div class="toast-content">
+                <h6>Added to Cart!</h6>
+                <p>Item has been added to your cart</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Remove from wishlist
+        function removeFromWishlist(btn) {
+            const card = btn.closest('.wishlist-card');
+            card.style.opacity = '0';
+            card.style.transform = 'scale(0.8)';
+            setTimeout(() => {
+                card.remove();
+                checkEmptyWishlist();
+            }, 300);
+        }
+
+        // Check if wishlist is empty
+        function checkEmptyWishlist() {
+            const grid = document.getElementById('wishlistGrid');
+            const emptyState = document.getElementById('emptyWishlist');
+            if (grid.children.length === 0) {
+                grid.style.display = 'none';
+                emptyState.style.display = 'block';
+            }
+        }
+
+        // Add to cart
+        function addToCart(btn) {
+            const toast = document.getElementById('cartToast');
+            toast.classList.add('show');
+            
+            btn.innerHTML = '<i class="fas fa-check"></i> Added!';
+            btn.style.background = '#22C55E';
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+                btn.innerHTML = '<i class="fas fa-shopping-bag"></i> Add to Cart';
+                btn.style.background = '';
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
